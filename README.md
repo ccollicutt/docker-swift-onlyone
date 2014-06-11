@@ -91,5 +91,4 @@ That's it!
 
 ## Todo
 
-* Perhaps runit or supervisor to manage the various services
-* Use environment variables to set the partition power and the like
+* Add all the files in /etc/swift with one command?

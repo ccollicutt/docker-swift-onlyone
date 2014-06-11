@@ -1,7 +1,18 @@
 FROM ubuntu:14.04
 MAINTAINER curtis <curtis@serverascode.com>
 
-# Partially fom http://docs.openstack.org/developer/swift/development_saio.html
+#
+# supervisor
+#
+
+RUN apt-get install -y supervisor
+RUN mkdir -p /var/log/supervisor
+ADD files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+#
+# Swift configuration
+# - Partially fom http://docs.openstack.org/developer/swift/development_saio.html
+#
 
 # common
 RUN apt-get update && apt-get install -y swift python-swiftclient rsync
