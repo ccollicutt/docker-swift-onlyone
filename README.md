@@ -10,7 +10,7 @@ I have only tested this using the Docking and the btrfs file system. OpenStack S
 
 ## startmain.sh
 
-Like many docker containers, there is a script that starts services. The most idiomatic way to use docker is one container one service, but in the case of this particular Dockerfile we will be starting several services in the container, such as rsyslog, memcached, and all the required OpenStack Swift daemons. So in this case we're using Docker more as a role-based system. All of the required Swift services are running in this one container.
+Like many docker containers, there is a script that starts services. The most idiomatic way to use docker is one container one service, but in this particular Dockerfile we will be starting several services in the container, such as rsyslog, memcached, and all the required OpenStack Swift daemons. So in this case we're using Docker more as a role-based system. All of the required Swift services are running in this one container.
 
 ## Usage
 
@@ -19,7 +19,7 @@ I suggest using the data container methodology.
 So first we create a data only container for /srv.
 
 ```bash
-vagrant@host1:~$ docker run -v /srv --name SWIFT_DATA busybo
+vagrant@host1:~$ docker run -v /srv --name SWIFT_DATA busybox
 ```
 
 Now that we have a data container, we can use the "--volumes-from" option when creating the "onlyone" container. Note that in this case I've called the image built from this docker file "curtis/swift-onlyone".
