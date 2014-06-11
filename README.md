@@ -61,7 +61,7 @@ Starting to tail /var/log/syslog...(hit ctrl-c if you are starting the container
 At this point OpenStack Swift is running.
 
 ```bash
-$ docker ps
+vagrant@host1:~$ docker ps
 CONTAINER ID        IMAGE                         COMMAND                CREATED             STATUS              PORTS                     NAMES
 4941f8cd8b48        curtis/swift-onlyone:latest   /bin/sh -c /usr/loca   58 seconds ago      Up 57 seconds       0.0.0.0:49182->8080/tcp   hopeful_brattain    
 ```
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE                         COMMAND                CREATED
 We can now use the swift python client to access Swift using the Docker forwarded port, in this example port 49182.
 
 ```bash
-$ swift -A http://127.0.0.1:49182/auth/v1.0 -U test:tester -K testing stat
+vagrant@host1:~$ swift -A http://127.0.0.1:49182/auth/v1.0 -U test:tester -K testing stat
        Account: AUTH_test
     Containers: 0
        Objects: 0
@@ -83,7 +83,7 @@ X-Put-Timestamp: 1402463864.77057
 Try uploading a file:
 
 ```bash
-$ swift -A http://127.0.0.1:49182/auth/v1.0 -U test:tester -K testing upload swift swift.txt
+vagrant@host1:~$ swift -A http://127.0.0.1:49182/auth/v1.0 -U test:tester -K testing upload swift swift.txt
 swift.txt
 ```
 
