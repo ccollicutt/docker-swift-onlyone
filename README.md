@@ -15,3 +15,4 @@ Like many docker containers, there is a script that starts services. The most id
 ## Todo
 
 * Perhaps runit or supervisor to manage the various services
+* Use environment variables to set the partition power and the like
