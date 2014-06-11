@@ -10,7 +10,7 @@ I have only tested this using the Docking and the btrfs file system. OpenStack S
 
 ## startmain.sh
 
-Like many docker containers, there is a script that starts services. The most idiomatic way to use docker is one container one service, but in the case of this particular Dockerfile we will be starting several services in the container, such as rsyslog, memcached, and all the required OpenStack Swift daemons.
+Like many docker containers, there is a script that starts services. The most idiomatic way to use docker is one container one service, but in the case of this particular Dockerfile we will be starting several services in the container, such as rsyslog, memcached, and all the required OpenStack Swift daemons. So in this case we're using Docker more as a role-based system.
 
 ## Todo
 
