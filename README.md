@@ -19,7 +19,7 @@ I suggest using the data container methodology.
 So first we create a data only container for /srv.
 
 ```bash
-$ docker run -v /srv --name SWIFT_DATA busybo
+vagrant@host1:~$ docker run -v /srv --name SWIFT_DATA busybo
 ```
 
 Now that we have a data container, we can use the "--volumes-from" option when creating the "onlyone" container. Note that in this case I've called the image built from this docker file "curtis/swift-onlyone".
