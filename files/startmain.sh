@@ -5,7 +5,7 @@
 #
 
 SWIFT_PART_POWER=${SWIFT_PART_POWER:-7}
-SWIFT_PART_HOURS=${SWIFT_PART_POWER:-1}
+SWIFT_PART_HOURS=${SWIFT_PART_HOURS:-1}
 SWIFT_REPLICAS=${SWIFT_REPLICAS:-1}
 
 
@@ -15,6 +15,8 @@ if [ ! -e /etc/swift/account.builder ]; then
 
 	# 2^& = 128 we are assuming just one drive
 	# 1 replica only
+
+	echo "Creating ring files..."
 
 	swift-ring-builder object.builder create ${SWIFT_PART_POWER} ${SWIFT_REPLICAS} ${SWIFT_PART_HOURS}
 	swift-ring-builder object.builder add r1z1-127.0.0.1:6010/sdb1 1
@@ -34,6 +36,7 @@ fi
 chown -R swift:swift /srv
 
 # Start supervisord
+echo "Starting supervisord..."
 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
 
 #
