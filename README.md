@@ -91,7 +91,8 @@ That's it!
 
 ## Todo
 
-* seems supervisord running as root in the container, a better way to do this?
+* SELINUX doesn't support btrfs?
+* It seems supervisord running as root in the container, a better way to do this?
 * bash command to start rsyslog is still running...
 * Add all the files in /etc/swift with one ADD command?
 * supervisor pid file is getting setup in /etc/

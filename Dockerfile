@@ -25,6 +25,9 @@ RUN apt-get install -y swift-proxy swift-object memcached python-keystoneclient 
 # storage
 RUN apt-get install -y swift-account swift-container swift-object 
 
+# passwords
+RUN apt-get install -y pwgen 
+
 # not sure how valuable dispersion will be...
 ADD files/dispersion.conf /etc/swift/dispersion.conf
 ADD files/rsyncd.conf /etc/rsyncd.conf
