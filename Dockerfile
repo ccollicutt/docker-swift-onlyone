@@ -1,11 +1,15 @@
 FROM ubuntu:14.04
 MAINTAINER curtis <curtis@serverascode.com>
 
-#
-# supervisor
-#
+RUN echo "deb http://archive.ubuntu.com/ubuntu $(lsb_release -c -s) universe" > /etc/apt/sources.list.d/universe.list
 
-RUN apt-get install -y supervisor
+RUN apt-get update
+RUN apt-get install -y supervisor swift python-swiftclient rsync \
+                       swift-proxy swift-object memcached python-keystoneclient \
+                       python-swiftclient swift-plugin-s3 python-netifaces \
+                       python-xattr python-memcache \
+                       swift-account swift-container swift-object pwgen
+
 RUN mkdir -p /var/log/supervisor
 ADD files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
@@ -13,20 +17,6 @@ ADD files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Swift configuration
 # - Partially fom http://docs.openstack.org/developer/swift/development_saio.html
 #
-
-# common
-RUN apt-get update && apt-get install -y swift python-swiftclient rsync
-
-# proxy
-RUN apt-get install -y swift-proxy swift-object memcached python-keystoneclient \
-			           python-swiftclient swift-plugin-s3 python-netifaces \ 
-			           python-xattr python-memcache
-
-# storage
-RUN apt-get install -y swift-account swift-container swift-object 
-
-# passwords
-RUN apt-get install -y pwgen 
 
 # not sure how valuable dispersion will be...
 ADD files/dispersion.conf /etc/swift/dispersion.conf
