@@ -54,7 +54,7 @@ if [ ! -z "${SWIFT_STORAGE_URL_SCHEME}" ]; then
 	grep "storage_url_scheme" /etc/swift/proxy-server.conf
 fi
 
-if [ ! -z "SWIFT_SET_PASSWORDS" ]; then
+if [ ! -z "${SWIFT_SET_PASSWORDS}" ]; then
 	echo "Setting passwords in /etc/swift/proxy-server.conf"
 	PASS=`pwgen 12 1`
 	sed -i -e "s/user_admin_admin = admin .admin .reseller_admin/user_admin_admin = $PASS .admin .reseller_admin/g" /etc/swift/proxy-server.conf
