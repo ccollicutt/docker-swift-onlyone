@@ -1,8 +1,6 @@
 FROM ubuntu:14.04
 MAINTAINER curtis <curtis@serverascode.com>
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu $(lsb_release -c -s) universe" > /etc/apt/sources.list.d/universe.list
-
 RUN apt-get update
 RUN apt-get install -y supervisor swift python-swiftclient rsync \
                        swift-proxy swift-object memcached python-keystoneclient \
