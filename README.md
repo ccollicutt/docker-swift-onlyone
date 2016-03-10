@@ -1,6 +1,6 @@
 #Docker OpenStack Swift onlyone
 
-Simple deployment of a "all in one" style OpenStack Swift server, uses Ubuntu packages are opposed to source.
+Simple deployment of a "all in one" style OpenStack Swift server, uses Ubuntu packages as opposed to source.
 
 ## Makefile and swiftrc
 
