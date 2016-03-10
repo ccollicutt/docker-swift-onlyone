@@ -17,6 +17,9 @@ fi
 
 # This comes from a volume, so need to chown it here, not sure of a better way
 # to get it owned by Swift.
+if [ ! -e /srv/node ]; then
+  mkdir /srv/node
+fi
 chown -R swift:swift /srv
 
 if [ ! -e /etc/swift/account.builder ]; then
