@@ -2,6 +2,9 @@ FROM ubuntu:14.04
 MAINTAINER curtis <curtis@serverascode.com>
 
 RUN apt-get update
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository cloud-archive:liberty
+RUN apt-get update
 RUN apt-get install -y supervisor swift python-swiftclient rsync \
                        swift-proxy swift-object memcached python-keystoneclient \
                        python-swiftclient swift-plugin-s3 python-netifaces \
@@ -26,7 +29,7 @@ ADD files/object-server.conf /etc/swift/object-server.conf
 ADD files/container-server.conf /etc/swift/container-server.conf
 ADD files/proxy-server.conf /etc/swift/proxy-server.conf
 ADD files/startmain.sh /usr/local/bin/startmain.sh
-RUN chmod 755 /usr/local/bin/*.sh
+RUN chmod 755 /usr/local/bin/startmain.sh
 
 EXPOSE 8080
 
